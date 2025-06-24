@@ -1,7 +1,16 @@
+asgiref
+Django 
+django-cors-headers
+djangorestframework
+djangorestframework-simplejwt
 langchain
 langchain-anthropic
 langchain-community
 langchain-openai
+psycopg2-binary
 pydantic
+PyJWT
+pytz
 python-dotenv
+sqlparse
 wikipedia

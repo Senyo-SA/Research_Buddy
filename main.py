@@ -6,7 +6,7 @@ from langchain_anthropic import ChatAnthropic
 load_dotenv()
 
 # llm1 = ChatOpenAI(model="gpt-4o-mini")
-llm2 = ChatAnthropic(model="claude-3-5-sonnet-20241022")
+llm2 = ChatAnthropic(model="claude-opus-4-20250514")
 
-result = llm2.invoke("What is computer language?")
+result = llm2.invoke("10 random computer science facts")
 print(result)
