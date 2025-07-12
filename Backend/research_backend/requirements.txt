@@ -10,5 +10,7 @@ langchain-openai
 psycopg2-binary
 pydantic
 python-dotenv
+PyJWT
+pytz
 sqlparse
 wikipedia
