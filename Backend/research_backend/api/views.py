@@ -23,6 +23,16 @@ class ResearchListCreate(generics.ListCreateAPIView):
             print(serializer.errors)
 
 
+
+class ResearchDelete(generics.DestroyAPIView):
+    serializer_class = ResearchSerialiser
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.uesr
+        return Research.objects.filter(researcher=user)
+
+
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerialiser
