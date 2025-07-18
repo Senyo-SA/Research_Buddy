@@ -27,7 +27,7 @@ function Home() {
         api
             .delete(`/api/research/delete/${id}/`)
             .then((response) => {
-                if (response.status === 204) alert("Note deleted!");
+                if (response.status === 204) alert("Research deleted!");
                 else alert("Failed to delete note.");
                 getResearch();
             })
