@@ -29,9 +29,10 @@ function Home() {
             .then((response) => {
                 if (response.status === 204) alert("Research deleted!");
                 else alert("Failed to delete note.");
-                getResearch();
+                
             })
             .catch((error) => alert(error));
+            getResearch();
     };
 
     const createResearch = (e) => {
@@ -41,9 +42,10 @@ function Home() {
             .then((response) => {
                 if (response.status === 201) alert("Note created!");
                 else alert("Failed to make note.");
-                getResearch();
+                
             })
             .catch((err) => alert(err));
+            getResearch();
     }; 
 
     return (
@@ -56,7 +58,7 @@ function Home() {
             </div>
             <h2>Create Research</h2>
             <form onSubmit={createResearch}>
-                <label htmlFor="title">Title:</label>
+                <label htmlFor="topic">Topic:</label>
                 <br />
                 <input
                     type="text"
@@ -66,7 +68,7 @@ function Home() {
                     onChange={(e) => setTopic(e.target.value)}
                     value={topic}
                 />
-                <label htmlFor="research_papers">Content:</label>
+                <label htmlFor="research_papers">Research_papers:</label>
                 <br />
                 <textarea
                     id="research_papers"

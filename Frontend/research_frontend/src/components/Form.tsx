@@ -59,4 +59,4 @@ function Form({ route, method }) {
     );
 }
 
-export default Form
+export default Form 
