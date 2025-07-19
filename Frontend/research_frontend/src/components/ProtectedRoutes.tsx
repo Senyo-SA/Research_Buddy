@@ -1,6 +1,6 @@
-import {Navigate} from 'react-router-dom'
-import { jwtDecode } from 'jwt-decode'
 import api from '../api'
+import { jwtDecode } from 'jwt-decode'
+import {Navigate} from 'react-router-dom'
 import { REFRESH_TOKEN, ACCESS_TOKEN } from '../constants'
 import { useEffect, useState } from 'react'
 
@@ -46,11 +46,11 @@ function ProtectedRoutes({children}:any){
         }
         const decoded = jwtDecode(token)
         const tokenexp : any = decoded.exp
-        const today = Date.now() / 100
+        const today = Date.now() / 1000
 
         if (tokenexp < today){
             await refreshToken()
-        }
+        } 
         else{
             setIsAuthorised(true)
         }

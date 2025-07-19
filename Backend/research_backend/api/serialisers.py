@@ -9,6 +9,7 @@ class UserSerialiser(serializers.ModelSerializer):
         extras = {'paswword': {'write_only': True}}
     
     def create(self, verified_data):
+        print(verified_data)
         user = User.objects.create_user(**verified_data)
         return user
     
