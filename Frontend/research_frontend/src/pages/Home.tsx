@@ -1,4 +1,4 @@
-import api from "../api";
+import api from "../api"
 import Research from "../components/Research"
 import { useState, useEffect } from "react";
 import "../styles/Home.css"
@@ -23,37 +23,36 @@ function Home() {
             .catch((err) => alert(err));
     };
 
-    const deleteResearch = (id : any) => {
+    const deleteResearch = (id) => {
         api
             .delete(`/api/research/delete/${id}/`)
             .then((response) => {
                 if (response.status === 204) alert("Research deleted!");
                 else alert("Failed to delete note.");
-                
+                getResearch();
             })
             .catch((error) => alert(error));
-            getResearch();
+            
     };
 
-    const createResearch = (e) => {
+    const createResearch = (e ) => {
         e.preventDefault();
         api
-            .post("/api/research/", { research_papers, topic })
+            .post("/api/research/", {research_papers, topic})
             .then((response) => {
                 if (response.status === 201) alert("Note created!");
                 else alert("Failed to make note.");
-                
+                getResearch();
             })
             .catch((err) => alert(err));
-            getResearch();
     }; 
 
     return (
         <div >
             <div>
                 <h2>Research Papers</h2>
-                {research.map((paper) => (
-                    <Research paper={paper} onDelete={deleteResearch}/>
+                {research.map((paper : any) => (
+                    <Research paper={paper} onDelete={deleteResearch} key={paper.id}/>
                 ))}
             </div>
             <h2>Create Research</h2>

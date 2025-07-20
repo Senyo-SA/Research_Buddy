@@ -6,7 +6,7 @@ class UserSerialiser(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'password']
-        extras = {'paswword': {'write_only': True}}
+        extras = {'password': {'write_only': True}}
     
     def create(self, verified_data):
         print(verified_data)
@@ -17,6 +17,6 @@ class UserSerialiser(serializers.ModelSerializer):
 class ResearchSerialiser(serializers.ModelSerializer):
     class Meta:
         model = Research
-        fields = ['id', 'topic', 'research_papers', 'research_date', 'researcher']
-        extras = {'researcher': {'read_only': True}}
+        fields = ['id', 'topic', 'research_papers', 'research_date', 'author']
+        extras = {"author": {"read_only": True}}
     

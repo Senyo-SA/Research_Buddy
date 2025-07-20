@@ -14,11 +14,11 @@ class ResearchListCreate(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Research.objects.filter(researcher=user)
+        return Research.objects.filter(author=user)
     
     def perform_create(self, serializer):
         if serializer.is_valid():
-            serializer.save(researcher=self.request.user)
+            serializer.save(author=self.request.user)
         else:
             print(serializer.errors)
 
@@ -29,8 +29,8 @@ class ResearchDelete(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        user = self.request.uesr
-        return Research.objects.filter(researcher=user)
+        user = self.request.user
+        return Research.objects.filter(author=user)
 
 
 class CreateUserView(generics.CreateAPIView):
