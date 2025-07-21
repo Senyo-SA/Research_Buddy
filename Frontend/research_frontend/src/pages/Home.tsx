@@ -23,7 +23,7 @@ function Home() {
             .catch((err) => alert(err));
     };
 
-    const deleteResearch = (id) => {
+    const deleteResearch = (id : any) => {
         api
             .delete(`/api/research/delete/${id}/`)
             .then((response) => {
@@ -35,10 +35,10 @@ function Home() {
             
     };
 
-    const createResearch = (e ) => {
+    const createResearch = (e : any) => {
         e.preventDefault();
         api
-            .post("/api/research/", {research_papers, topic})
+            .post("/api/research/", {topic})
             .then((response) => {
                 if (response.status === 201) alert("Note created!");
                 else alert("Failed to make note.");
@@ -62,20 +62,16 @@ function Home() {
                 <input
                     type="text"
                     id="topic"
-                    name="topic"
+                    name="topic" 
                     required
                     onChange={(e) => setTopic(e.target.value)}
                     value={topic}
                 />
                 <label htmlFor="research_papers">Research_papers:</label>
                 <br />
-                <textarea
-                    id="research_papers"
-                    name="research_papers"
-                    required
-                    value={research_papers}
-                    onChange={(e) => setResearch_Papers(e.target.value)}
-                ></textarea>
+                <div>
+                     {research_papers}        
+               </div>
                 <br />
                 <input type="submit" value="Submit"></input>
             </form>

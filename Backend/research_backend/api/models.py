@@ -5,7 +5,7 @@ from django.db import models
 
 class Research(models.Model):
     topic = models.CharField(max_length=100)
-    research_papers = models.TextField()
+    research_papers = models.TextField(null=True)
     research_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name="research")
 
