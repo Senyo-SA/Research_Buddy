@@ -19,4 +19,3 @@ class ResearchSerialiser(serializers.ModelSerializer):
         model = Research
         fields = ['id', 'topic', 'research_papers', 'research_date', 'author']
         extras = {"author": {"read_only": True}}
-    

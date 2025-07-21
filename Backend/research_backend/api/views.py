@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render
 from .models import Research
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -14,7 +13,13 @@ class ResearchListCreate(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Research.objects.filter(author=user)
+
+        research_list = Research.objects.filter(author=user)
+
+        if len(research_list) > 0:
+            print(Research.objects.filter(author=user)[len(research_list) - 1])
+
+        return (Research.objects.filter(author=user))
     
     def perform_create(self, serializer):
         if serializer.is_valid():
