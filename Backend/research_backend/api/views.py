@@ -3,6 +3,21 @@ from .models import Research
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serialisers import UserSerialiser, ResearchSerialiser
+from dotenv import load_dotenv
+from langchain_anthropic import ChatAnthropic
+from langchain_openai import ChatOpenAI
+from pydantic import BaseModel
+
+
+load_dotenv()
+
+def research_query(statement):
+
+    # llm1 = ChatOpenAI(model="gpt-4o-mini")
+    llm2 = ChatAnthropic(model="claude-opus-4-20250514")
+
+    result = llm2.invoke(statement)
+    return (result.content)
 
 
 # Create your views here.
@@ -13,13 +28,18 @@ class ResearchListCreate(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user
+        
+        if Research.objects.all():
+            change = Research.objects.all()[len(Research.objects.all())-1]
+            change.research_papers = str(research_query(change.topic))
+            change.save()
+        else:
+            print('Empty')
 
-        research_list = Research.objects.filter(author=user)
+        
 
-        if len(research_list) > 0:
-            print(Research.objects.filter(author=user)[len(research_list) - 1])
+        return Research.objects.filter(author=user)
 
-        return (Research.objects.filter(author=user))
     
     def perform_create(self, serializer):
         if serializer.is_valid():

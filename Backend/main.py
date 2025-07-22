@@ -6,8 +6,13 @@ from pydantic import BaseModel
 
 load_dotenv()
 
-# llm1 = ChatOpenAI(model="gpt-4o-mini")
-llm2 = ChatAnthropic(model="claude-opus-4-20250514")
+def research_query():
 
-result = llm2.invoke("random computing fact")
-print(result.content)
+    # llm1 = ChatOpenAI(model="gpt-4o-mini")
+    llm2 = ChatAnthropic(model="claude-opus-4-20250514")
+
+    result = llm2.invoke("research")
+    print(result.content)
+
+
+research_query()

@@ -11,4 +11,7 @@ class Research(models.Model):
 
 
     def __str__(self):
-        return self.topic
+        return f"{self.topic} and {self.research_papers}"
+    
+
+
