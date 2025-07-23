@@ -19,7 +19,7 @@ function RegisterAndLogout (){
 function App() {
   
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <Routes>
         <Route
           path='/'
